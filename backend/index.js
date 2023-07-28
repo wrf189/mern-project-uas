@@ -31,6 +31,9 @@ const connect = async () => {
     console.log('MongoDB connected failed');
   }
 };
+app.get("/", (req, res) => {
+  res.send("Hello, this is the home page!");
+});
 
 app.use(express.json());
 app.use(cors(corsOptions));
