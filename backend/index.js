@@ -11,6 +11,11 @@ import bookingRoute from './routes/bookings.js';
 
 dotenv.config();
 const app = express();
+const port = process.env.PORT || 8000;
+const corsOptions = {
+  origin: 'https://project-uas-mern.vercel.app',
+  credentials: true
+};
 
 mongoose.set("strictQuery", false);
 
@@ -36,10 +41,8 @@ app.use("/api/v1/users", userRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
 
-app.use(cors(
-  {
-    origin: ["https://project-uas-mern.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+app.listen(port, () => {
+  // Tidak perlu menggunakan connect() disini, cukup panggil di luar app.listen
+  console.log('server listening on port', port);
+  connect();
+});
