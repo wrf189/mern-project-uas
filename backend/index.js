@@ -8,6 +8,7 @@ import userRoute from './routes/users.js';
 import authRoute from './routes/auth.js';
 import reviewRoute from './routes/reviews.js';
 import bookingRoute from './routes/bookings.js';
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
@@ -40,11 +41,17 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/tours", tourRoute);
-app.use("/api/v1/users", userRoute);
-app.use("/api/v1/review", reviewRoute);
-app.use("/api/v1/booking", bookingRoute);
+app.use("/auth", authRoute);
+app.use("/tours", tourRoute);
+app.use("/users", userRoute);
+app.use("/review", reviewRoute);
+app.use("/booking", bookingRoute);
+
+app.get('*',(req,res,next)=>{
+  res.status(200).json({
+    message:'bad request'
+  })
+})
 
 app.listen(port, () => {
   // Tidak perlu menggunakan connect() disini, cukup panggil di luar app.listen
