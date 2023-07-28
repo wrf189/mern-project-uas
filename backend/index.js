@@ -31,6 +31,8 @@ const connect = async () => {
     console.log('MongoDB connected failed');
   }
 };
+
+// Rute untuk menangani permintaan GET ke root path ("/")
 app.get("/", (req, res) => {
   res.send("Hello, this is the home page!");
 });
