@@ -46,9 +46,3 @@ app.use("/tours", tourRoute);
 app.use("/users", userRoute);
 app.use("/review", reviewRoute);
 app.use("/booking", bookingRoute);
-
-app.listen(port, () => {
-  // Tidak perlu menggunakan connect() disini, cukup panggil di luar app.listen
-  console.log('server listening on port', port);
-  connect();
-});
