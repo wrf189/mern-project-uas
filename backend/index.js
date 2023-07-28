@@ -14,6 +14,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 const corsOptions = {
   origin: 'https://project-uas-mern.vercel.app',
+  methods: 'GET', 'POST',
   credentials: true
 };
 
