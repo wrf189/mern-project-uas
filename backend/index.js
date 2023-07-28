@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 app.use(cors(
   {
-    origin: ["https://project-uas-mern.vercel.app/"],
+    origin: ["https://project-uas-mern.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
