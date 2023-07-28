@@ -14,7 +14,6 @@ const app = express();
 const port = process.env.PORT || 8000;
 const corsOptions = {
   origin: 'https://project-uas-mern.vercel.app',
-  methods: 'GET', 'POST',
   credentials: true
 };
 
@@ -46,8 +45,3 @@ app.use("/tours", tourRoute);
 app.use("/users", userRoute);
 app.use("/review", reviewRoute);
 app.use("/booking", bookingRoute);
-
-app.listen(port, () => {
-   connect()
-   console.log('server listening on port', port)
-})
