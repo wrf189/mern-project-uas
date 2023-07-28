@@ -1,4 +1,3 @@
-// Import library
 import express from "express";
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -13,6 +12,10 @@ import bookingRoute from './routes/bookings.js';
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
+const corsOptions = {
+  origin: 'https://project-uas-mern.vercel.app',
+  credentials: true
+};
 
 mongoose.set("strictQuery", false);
 
@@ -29,13 +32,13 @@ const connect = async () => {
   }
 };
 
-// Middleware untuk mengizinkan CORS dari domain yang diinginkan
-app.use(cors({
-  origin: 'https://project-uas-mern.vercel.app',
-  credentials: true
-}));
+// Rute untuk menangani permintaan GET ke root path ("/")
+app.get("/", (req, res) => {
+  res.send("Hello, this is the home page!");
+});
 
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use("/auth", authRoute);
 app.use("/tours", tourRoute);
