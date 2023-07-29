@@ -13,7 +13,7 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 const corsOptions = {
-   origin: "https://merntravel-uas.onrender.com",
+   origin: "https://project-uas-mern.vercel.app",
    credentials: true
 }
 
